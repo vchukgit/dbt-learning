@@ -1,5 +1,5 @@
 
-  create or replace  view analytics.dbt.dates  as (
+  create or replace  view analytics.dbt_venu.dates  as (
     
 
 

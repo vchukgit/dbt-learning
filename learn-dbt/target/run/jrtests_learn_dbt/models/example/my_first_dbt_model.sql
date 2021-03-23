@@ -1,6 +1,6 @@
 
 
-      create or replace transient table analytics.dbt.first_model  as
+      create or replace transient table analytics.dbt_venu.first_model  as
       (/*
     Welcome to your first dbt model!
     Did you know that you can also configure models directly within SQL files?
@@ -14,15 +14,15 @@
 
 with source_data as (
 
-    select 1 as id
+    select 1 as id, 'NY' as state, '2020-02-01 00:01:00.000'::timestamp as updated_at
     union all
-    select null as id
-
+    select null as id, 'CT' as state, '2020-01-01 00:00:00.000'::timestamp as updated_at
+    union all
+    select 3 as id, 'VT' as state, '2020-01-01 00:00:00.000'::timestamp as updated_at
 )
 
-select *, True as first_variable
+select *
 from source_data
-where id >= 2
 
 /*
     Uncomment the line below to remove records with null `id` values

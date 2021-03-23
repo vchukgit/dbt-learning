@@ -29,7 +29,6 @@ models:
       columns:
          - name: o_orderdate
            tests:
-              - unique
               - not_null
     - name: covid_us
       description: "the total covid metrics for the US"
@@ -39,3 +38,16 @@ models:
               - unique
               - not_null
     - name: time
+
+sources:
+  - name: sample
+    database: snowflake_sample_data
+    schema: tpch_sf1
+    tables:
+        - name: customer
+          colummns:
+            - name: c_custkey
+          tests:
+                - unique
+                - not_null
+        - name: orders

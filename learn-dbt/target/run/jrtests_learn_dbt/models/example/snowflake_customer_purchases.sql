@@ -1,7 +1,23 @@
 
 
-      create or replace transient table analytics.dbt.snowflake_customer_purchases  as
+      create or replace transient table analytics.dbt_venu.snowflake_customer_purchases  as
       (
+
+
+with sample_customer as (
+
+  SELECT *
+  FROM snowflake_sample_data.tpch_sf1.customer
+),
+
+sample_orders as (
+
+    select *
+    from snowflake_sample_data.tpch_sf1.orders
+)
+
+
+
 
 SELECT
 
@@ -10,15 +26,26 @@ SELECT
   c.c_nationkey as nation,
   sum(o.o_totalprice) as total_order_price
 
-from "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."CUSTOMER" c
-LEFT JOIN "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."ORDERS" o
+-- from "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."CUSTOMER" c
+from sample_customer c
+LEFT JOIN
+sample_orders o
+--"SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."ORDERS" o
 
 on c_custkey = o.o_custkey
 
-group by
 
-  c.c_custkey,
-  c.c_name,
-  c.c_nationkey
+  GROUP BY
+   
+     1
+      , 
+   
+     2
+      , 
+   
+     3
+     
+   
+
       );
     
