@@ -1,6 +1,6 @@
 
 
-      create or replace transient table analytics.dbt.time  as
+      create or replace transient table analytics.dbt_venu.time  as
       (
 
 
